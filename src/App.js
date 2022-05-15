@@ -5,10 +5,10 @@ import { CardList } from './CardList';
 import { useCitiesList } from './hooks/useCitiesList.js';
 
 function App () {
-  const [citiesList, setCitiesList] = useCitiesList();
+  const [citiesList, dispatch] = useCitiesList();
   return (
     <div className="Main">
-      <Input setCitiesList={setCitiesList}/>
+      <Input dispatch={dispatch}/>
       {citiesList && <CardList citiesList={citiesList}/>}
     </div>
   );
