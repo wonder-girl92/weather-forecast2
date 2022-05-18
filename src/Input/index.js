@@ -1,8 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
 import '../App.css';
+import { GlobalContext } from '../App';
 
-export const Input = ({ dispatch, inputValue, editingCity }) => {
+export const Input = () => {
   const inputRef = useRef(null);
+  const { dispatch, state: { inputValue, editingCity } } = useContext(GlobalContext);
 
   const handleOnAdd = () => {
     if(inputValue.length) {
