@@ -6,13 +6,14 @@ import { GlobalContext } from '../App'
 
 export const Card = memo(({ city }) => {
   const data = useWeather(city);
-const { dispatch } = useContext(GlobalContext);
+  const { dispatch } = useContext(GlobalContext);
 
   if (!data) return null;
 
-  const {name, weather, main} = data;
-  const {description, icon} = weather[0];
-  const {temp, humidity, feels_like} = main;
+  const {location, current} = data;
+  const {name} = location;
+  const {temp_c, condition, humidity, feelslike_c} = current;
+  const {text, icon} = condition;
 
   const handleOnDelete = () => {
     dispatch({
@@ -41,15 +42,15 @@ const { dispatch } = useContext(GlobalContext);
     </div>
       <div className="MainInfo">
         <img className="Icon"
-             src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
+             src={icon}
              alt="icon"/>
         <div className="Title"> {name} </div>
-        <div className="Description"> {description} </div>
-        <div className="Temperature"> {temp.toFixed()} </div>
+        <div className="Description"> {text} </div>
+        <div className="Temperature"> {temp_c.toFixed()} </div>
       </div>
       <div className="Information">
-        <div> Humidity: {humidity} </div>
-        <div> Feels like: {feels_like.toFixed()}° </div>
+        <div> Влажность: {humidity} </div>
+        <div> Ощущается как: {feelslike_c.toFixed()}° </div>
       </div>
     </div>
   );

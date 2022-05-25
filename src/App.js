@@ -12,7 +12,7 @@ function App () {
     <GlobalContext.Provider value={{ state, dispatch }}>
     <div className="Main">
       <Input />
-       <CardList />
+       <CardList citiesList={state.citiesList}/>
     </div>
     </GlobalContext.Provider>
   );
