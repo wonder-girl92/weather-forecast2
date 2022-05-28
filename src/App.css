@@ -1,7 +1,7 @@
 .Main {
-  background-color: #d8d8d8;
+  background-color: #e9e8e8;
   height: 100vh;
-  padding: 24px;
+  padding: 20px;
 }
 
 /* Input start */
@@ -10,8 +10,8 @@
   display: flex;
   height: 50px;
   border-radius: 12px;
-  margin-bottom: 24px;
-  box-shadow: 3px 3px 12px 1px rgba(0,0,0,0.25);
+  margin-bottom: 20px;
+  box-shadow: 3px 3px 10px 2px rgba(0,0,0,0.2);
 }
 
 .Input {
@@ -19,9 +19,9 @@
   padding: 4px 8px;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
-  background-color: #3A8AC0;
+  background-color: #7ed6db;
   font-size: 18px;
-  color: #fff;
+  color: #313131;
   border: none;
   outline: 0;
 }
@@ -30,6 +30,12 @@
   width: 20%;
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
+  border-left-style: dotted;
+  border-color: #3d6695;
+  border-width: 0 0 0 4px;
+  cursor: pointer;
+  font-weight: bold;
+  color:#313131;
 }
 
 /* Input finish */
@@ -41,7 +47,7 @@
 }
 
 .Select {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   width: 100%;
   padding: 4px 8px;
 }
@@ -49,13 +55,13 @@
 .Card {
   width: 200px;
   height: fit-content;
-  padding: 12px;
+  padding: 18px 12px;
   border-radius: 12px;
-  background-color: #3A8AC0;
+  background-color: #7ed6db;
   font-size: 14px;
-  color: #fff;
-  margin-left: 24px;
-  box-shadow: 3px 3px 12px 1px rgba(0,0,0,0.25);
+  color: #313131;
+  margin-left: 20px;
+  box-shadow: 3px 3px 10px 2px rgba(0,0,0,0.2);
 }
 
 .Card:first-child {
@@ -68,8 +74,20 @@
 }
 
 .ActionButton {
-  background: #fff;
-  border: 1px solid black;
+  background: #ededed;
+  border: #3d6695;
+  cursor: pointer;
+}
+
+.ActionButtonEdit {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-right-style: dotted;
+}
+
+.ActionButtonDelete {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 .MainInfo {
@@ -78,9 +96,17 @@
   align-items: center;
 }
 
+.Icon {
+  height: 75px;
+  background-color: rgba(202, 235, 235, 0.99);
+  box-shadow: 0 0 17px 15px #7ed6db inset;
+}
+
 .Title {
   font-size: 24px;
   font-weight: 500;
+  margin-top: 8px;
+  text-align: center;
 }
 
 .Description {
@@ -100,7 +126,7 @@
 }
 
 .Information {
-  margin-top: 12px;
+  margin-top: 16px;
 }
 
 .Information > div {

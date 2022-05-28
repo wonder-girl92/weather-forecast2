@@ -48,9 +48,9 @@ export const Input = () => {
       {
         editingCity ?
           <button className="Button"
-                  onClick={handleOnDone}> done </button>
+                  onClick={handleOnDone}> DONE </button>
         :  <button className="Button"
-                   onClick={handleOnAdd}> + </button>
+                   onClick={handleOnAdd}> ADD THE CITY </button>
       }
     </div>
 )

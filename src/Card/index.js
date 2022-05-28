@@ -32,13 +32,13 @@ export const Card = memo(({ city }) => {
     <div className="Card">
       <div className="ActionButtonWrap">
         <button
-          className="ActionButton"
+          className="ActionButton ActionButtonEdit"
           onClick={handleOnEdit}
         > edit </button>
       <button
-        className="ActionButton"
+        className="ActionButton ActionButtonDelete"
       onClick={handleOnDelete}
-      > X </button>
+      > ✖ </button>
     </div>
       <div className="MainInfo">
         <img className="Icon"
