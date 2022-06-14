@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from '../Card';
 import '../App.css';
-import { withGlobalState } from '../hocs/withGlobalState'
+import { withGlobalState } from '../HOCs/withGlobalState';
 
 
 class CardListNoState extends React.Component {

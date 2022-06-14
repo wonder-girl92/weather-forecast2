@@ -1,11 +1,14 @@
-import React, { memo, useContext } from 'react'
+import React, { memo, useContext } from 'react';
+import { Link, useHistory, useRouteMatch } from 'react-router-dom';
+
 import '../App.css';
 import { useWeather } from '../hooks/useWeather';
-import { GlobalContext } from '../App'
+import { GlobalContext } from '../App';
 
-
-export const Card = memo(({ city }) => {
+  const CardNoMemo = ({ city }) => {
   const data = useWeather(city);
+  const history = useHistory();
+  const isHome = Boolean(useRouteMatch('/home'));
   const { dispatch } = useContext(GlobalContext);
 
   if (!data) return null;
@@ -26,32 +29,63 @@ export const Card = memo(({ city }) => {
       type: 'EDIT_CITY',
       payload: city,
     })
+    history.push('/home');
   };
 
-  return  (
-    <div className="Card">
-      <div className="ActionButtonWrap">
-        <button
-          className="ActionButton ActionButtonEdit"
-          onClick={handleOnEdit}
-        > edit </button>
-      <button
-        className="ActionButton ActionButtonDelete"
-      onClick={handleOnDelete}
-      > ✖ </button>
-    </div>
-      <div className="MainInfo">
-        <img className="Icon"
-             src={icon}
-             alt="icon"/>
-        <div className="Title"> {name} </div>
-        <div className="Description"> {text} </div>
-        <div className="Temperature"> {temp_c.toFixed()} </div>
+  if (isHome) {
+    return  (
+      <Link to={`/city/${city.toLowerCase()}`} className="Card">
+        <div className="ActionButtonWrap">
+          <button
+            className="ActionButton ActionButtonEdit"
+            onClick={handleOnEdit}
+          > edit </button>
+          <button
+            className="ActionButton ActionButtonDelete"
+            onClick={handleOnDelete}
+          > ✖ </button>
+        </div>
+        <div className="MainInfo">
+          <img className="Icon"
+               src={icon}
+               alt="icon"/>
+          <div className="Title"> {name} </div>
+          <div className="Description"> {text} </div>
+          <div className="Temperature"> {temp_c.toFixed()} </div>
+        </div>
+        <div className="Information">
+          <div> Влажность: {humidity} </div>
+          <div> Ощущается как: {feelslike_c.toFixed()}° </div>
+        </div>
+      </Link>
+    )
+  }
+    return  (
+      <div className="Card">
+        <div className="ActionButtonWrap">
+          <button
+            className="ActionButton ActionButtonEdit"
+            onClick={handleOnEdit}
+          > edit </button>
+          <button
+            className="ActionButton ActionButtonDelete"
+            onClick={handleOnDelete}
+          > ✖ </button>
+        </div>
+        <div className="MainInfo">
+          <img className="Icon"
+               src={icon}
+               alt="icon"/>
+          <div className="Title"> {name} </div>
+          <div className="Description"> {text} </div>
+          <div className="Temperature"> {temp_c.toFixed()} </div>
+        </div>
+        <div className="Information">
+          <div> Влажность: {humidity} </div>
+          <div> Ощущается как: {feelslike_c.toFixed()}° </div>
+        </div>
       </div>
-      <div className="Information">
-        <div> Влажность: {humidity} </div>
-        <div> Ощущается как: {feelslike_c.toFixed()}° </div>
-      </div>
-    </div>
-  );
-})
+    )
+};
+
+export const Card = memo(CardNoMemo);

@@ -44,7 +44,7 @@ export const Input = () => {
     <input className="Input"
            onChange={handleOnChange}
            value={inputValue}
-    ref={inputRef}/>
+           ref={inputRef}/>
       {
         editingCity ?
           <button className="Button"
