@@ -4,13 +4,12 @@ import { Card } from '../Card';
 import { useForecast } from '../hooks/useForecast';
 import { DailyCard } from '../DailyCard';
 import '../App.css';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
-export const SingleCity = (props) => {
-  const { city } = props.match.params;
+export const SingleCity = () => {
+  const params = useParams();
+  const { city } = params;
   const data = useForecast(city);
-  console.log(city)
-  console.log('data', data)
 
   return (
     <div className="SingleCityWrap">
