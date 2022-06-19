@@ -146,19 +146,45 @@
   align-items: center;
 }
 
+.SingleCityWrap .Card {
+  margin-left: 0px;
+}
+
 .DailyCards {
   margin-top: 20px;
   display: flex;
-  overflow-x: scroll;
-  width: 100%;
   padding: 20px;
+  align-items: center;
 }
 
 .DailyCard {
+  width: 160px;
+  height: 160px;
   background-color: #8dd4d8;
   border-radius: 12px;
   box-shadow: 3px 3px 10px 2px rgba(0,0,0,0.2);
   margin-left: 8px;
+  text-align: center;
+  align-items: center;
+  padding: 10px;
+  word-wrap: break-word;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+}
+
+.DailyCard .Icon {
+  width: 75px;
+}
+
+.GoBack {
+  color: #3d6695;
+  margin-bottom: 24px;
+  text-decoration: none;
+}
+
+.GoBack:hover {
+  text-decoration: underline;
 }
 
 /* SingleCity finish */
