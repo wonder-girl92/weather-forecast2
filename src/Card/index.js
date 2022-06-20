@@ -11,38 +11,59 @@ import { GlobalContext } from '../App';
   const isHome = Boolean(useRouteMatch('/home'));
   const { dispatch } = useContext(GlobalContext);
 
+    const handleOnDelete = (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      dispatch({
+        type: 'DELETE_CITY',
+        payload: city,
+      })
+    };
+    const handleOnEdit = (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      dispatch({
+        type: 'EDIT_CITY',
+        payload: city,
+      })
+      history.push('/home');
+    };
+
+    const handleOnLinkClick = () => {
+      dispatch({
+        type: 'EDIT_CITY_DONE',
+        payload: city,
+      })
+      history.push('/home');
+    };
+
+  if (data === null) {
+    return (
+      <div className="Card">
+        <div className="ActionButtonWrap">
+          <button
+            className="ActionButton ActionButtonEdit"
+            onClick={handleOnEdit}
+          > edit </button>
+          <button
+            className="ActionButton ActionButtonDelete"
+            onClick={handleOnDelete}
+          > ✖ </button>
+        </div>
+        <div className="MainInfo">
+          <div className="Title"> {city} </div>
+          <div className="Description"> Not found </div>
+        </div>
+      </div>
+    )
+  }
+
   if (!data) return null;
 
-  const {location, current} = data;
-  const {name} = location;
-  const {temp_c, condition, humidity, feelslike_c} = current;
-  const {text, icon} = condition;
-
-  const handleOnDelete = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    dispatch({
-      type: 'DELETE_CITY',
-      payload: city,
-    })
-  };
-  const handleOnEdit = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    dispatch({
-      type: 'EDIT_CITY',
-      payload: city,
-    })
-    history.push('/home');
-  };
-
-  const handleOnLinkClick = () => {
-    dispatch({
-      type: 'EDIT_CITY_DONE',
-      payload: city,
-    })
-    history.push('/home');
-    }
+    const {location, current} = data;
+    const {name} = location;
+    const {temp_c, condition, humidity, feelslike_c} = current;
+    const {text, icon} = condition;
 
   if (isHome) {
     return  (
