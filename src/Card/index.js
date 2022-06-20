@@ -18,13 +18,17 @@ import { GlobalContext } from '../App';
   const {temp_c, condition, humidity, feelslike_c} = current;
   const {text, icon} = condition;
 
-  const handleOnDelete = () => {
+  const handleOnDelete = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     dispatch({
       type: 'DELETE_CITY',
       payload: city,
     })
   };
-  const handleOnEdit = () => {
+  const handleOnEdit = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     dispatch({
       type: 'EDIT_CITY',
       payload: city,
@@ -32,9 +36,21 @@ import { GlobalContext } from '../App';
     history.push('/home');
   };
 
+  const handleOnLinkClick = () => {
+    dispatch({
+      type: 'EDIT_CITY_DONE',
+      payload: city,
+    })
+    history.push('/home');
+    }
+
   if (isHome) {
     return  (
-      <Link to={`/city/${city.toLowerCase()}`} className="Card">
+      <Link
+        to={`/city/${city.toLowerCase()}`}
+        onClick={handleOnLinkClick}
+        className="Card"
+      >
         <div className="ActionButtonWrap">
           <button
             className="ActionButton ActionButtonEdit"
@@ -51,7 +67,7 @@ import { GlobalContext } from '../App';
                alt="icon"/>
           <div className="Title"> {name} </div>
           <div className="Description"> {text} </div>
-          <div className="Temperature"> {temp_c.toFixed()} </div>
+          <div className="Temperature"> {temp_c.toFixed()}° </div>
         </div>
         <div className="Information">
           <div> Влажность: {humidity} </div>

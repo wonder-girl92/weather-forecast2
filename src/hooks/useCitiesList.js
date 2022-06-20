@@ -16,7 +16,12 @@ const reducer = (state, action) => {
     case 'DELETE_CITY': {
       const oldArray = state.citiesList;
       const newArray = oldArray.filter(el => el !== action.payload);
-        return { ...state, citiesList: newArray };
+        return {
+          ...state,
+          citiesList: newArray,
+          editingCity: initialState.editingCity,
+          inputValue: initialState.inputValue,
+        };
     }
     case 'EDIT_CITY': {
       return { ...state, inputValue: action.payload,

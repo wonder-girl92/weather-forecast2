@@ -117,7 +117,7 @@ body {
 
 .Title {
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 400;
   margin-top: 8px;
   text-align: center;
 }
@@ -131,11 +131,7 @@ body {
 .Temperature {
   margin-top: 12px;
   font-size: 40px;
-  font-weight: 500;
-}
-
-.Temperature::after {
-  content: "°";
+  font-weight: 400;
 }
 
 .Information {
